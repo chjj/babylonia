@@ -162,9 +162,8 @@ function jsPointer(location) {
 
 async function main() {
   // Fresh install.
-  await fs.rimraf(BIN);
-  await fs.rimraf(VENDOR);
   await fs.rimraf(PACKAGE_MODULES);
+  await fs.mkdirp(PACKAGE_MODULES, 0o755);
 
   await exec(PACKAGE, ['npm', 'install',
                        '--no-shrinkwrap',
@@ -176,6 +175,7 @@ async function main() {
   await fs.rimraf(PACKAGE_LOCK);
 
   // Move node_modules to vendor directory.
+  await fs.rimraf(VENDOR);
   await fs.mkdirp(VENDOR, 0o755);
   await fs.rename(PACKAGE_MODULES, VENDOR_MODULES);
 
@@ -198,6 +198,7 @@ async function main() {
   await fs.writeFile(INDEXJS, jsPointer('./core'), { mode: 0o644 });
 
   // Create pointers in the bin directory.
+  await fs.rimraf(BIN);
   await fs.mkdirp(BIN, 0o755);
 
   for (const [name, location] of BIN_FILES) {
