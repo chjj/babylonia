@@ -1,7 +1,7 @@
 {
   "name": "babylonia",
-  "version": "7.2.2",
-  "description": "Vendored babel",
+  "version": "0.0.0",
+  "description": "zero-dependency babel",
   "keywords": [
     "babel"
   ],
