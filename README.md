@@ -1,6 +1,6 @@
 # Babylonia
 
-A zero-dependency package which vendors _all_ `@babel` modules for security and
+A zero-dependency package which vendors _all_ [@babel] modules for security and
 simplicity.
 
 Babylonia makes use of the fact that NPM allows non-toplevel `node_modules`
@@ -121,4 +121,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+[@babel]: https://babeljs.io/
 [bcoin]: https://github.com/bcoin-org
