@@ -66,6 +66,12 @@ cryptocurrency project whose devs and users are particularly target-able for
 certain kinds of package attacks like the one seen on the `event-stream`
 package. As such, we seek to minimize the NPM attack surface.
 
+### Why not use shrinkwrap or bundledDependencies?
+
+Bundling the dependencies directly allows one to clone directly from github
+without having to run `npm install`. We are aiming to minimize reliance on NPM
+altogether.
+
 ## License
 
 Babel License
