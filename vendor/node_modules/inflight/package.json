@@ -17,9 +17,6 @@
   "devDependencies": {
     "tap": "^7.1.2"
   },
-  "files": [
-    "inflight.js"
-  ],
   "homepage": "https://github.com/isaacs/inflight",
   "license": "ISC",
   "main": "inflight.js",

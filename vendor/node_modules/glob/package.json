@@ -27,11 +27,6 @@
   "engines": {
     "node": "*"
   },
-  "files": [
-    "glob.js",
-    "sync.js",
-    "common.js"
-  ],
   "homepage": "https://github.com/isaacs/node-glob#readme",
   "license": "ISC",
   "main": "glob.js",

@@ -149,6 +149,17 @@ async function clean(root) {
       }
     }
 
+    // NPM gets confused by these when re-packaging:
+    if (json.bundledDependencies != null) {
+      delete json.bundledDependencies;
+      changed = true;
+    }
+
+    if (json.files != null) {
+      delete json.files;
+      changed = true;
+    }
+
     if (!changed)
       return;
 

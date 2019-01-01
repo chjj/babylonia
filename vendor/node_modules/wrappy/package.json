@@ -17,9 +17,6 @@
   "directories": {
     "test": "test"
   },
-  "files": [
-    "wrappy.js"
-  ],
   "homepage": "https://github.com/npm/wrappy",
   "license": "ISC",
   "main": "wrappy.js",

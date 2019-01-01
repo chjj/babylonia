@@ -22,10 +22,6 @@
   "engines": {
     "node": ">=4"
   },
-  "files": [
-    "index.js",
-    "browser.js"
-  ],
   "homepage": "https://github.com/chalk/supports-color#readme",
   "keywords": [
     "color",

@@ -9,10 +9,6 @@
   "devDependencies": {
     "tap": "^7.1.0"
   },
-  "files": [
-    "inherits.js",
-    "inherits_browser.js"
-  ],
   "homepage": "https://github.com/isaacs/inherits#readme",
   "keywords": [
     "inheritance",

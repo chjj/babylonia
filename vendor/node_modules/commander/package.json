@@ -19,10 +19,6 @@
     "ts-node": "^7.0.1",
     "typescript": "^2.9.2"
   },
-  "files": [
-    "index.js",
-    "typings/index.d.ts"
-  ],
   "homepage": "https://github.com/tj/commander.js#readme",
   "keywords": [
     "commander",

@@ -19,9 +19,6 @@
   "engines": {
     "node": "*"
   },
-  "files": [
-    "minimatch.js"
-  ],
   "homepage": "https://github.com/isaacs/minimatch#readme",
   "license": "ISC",
   "main": "minimatch.js",

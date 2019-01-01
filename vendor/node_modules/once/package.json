@@ -19,9 +19,6 @@
   "directories": {
     "test": "test"
   },
-  "files": [
-    "once.js"
-  ],
   "homepage": "https://github.com/isaacs/once#readme",
   "keywords": [
     "once",

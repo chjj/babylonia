@@ -12,10 +12,6 @@
   "deprecated": false,
   "description": "Use node's fs.realpath, but fall back to the JS implementation if the native one fails",
   "devDependencies": {},
-  "files": [
-    "old.js",
-    "index.js"
-  ],
   "homepage": "https://github.com/isaacs/fs.realpath#readme",
   "keywords": [
     "realpath",

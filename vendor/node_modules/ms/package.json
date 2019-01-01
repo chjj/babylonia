@@ -19,9 +19,6 @@
       "es6": true
     }
   },
-  "files": [
-    "index.js"
-  ],
   "homepage": "https://github.com/zeit/ms#readme",
   "license": "MIT",
   "lint-staged": {
