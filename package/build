@@ -4,7 +4,7 @@
 
 const assert = require('assert');
 const cp = require('child_process');
-const fs = require('bfile');
+const fs = require('./fs');
 const path = require('path');
 
 const {
@@ -30,7 +30,6 @@ const BIN = join(ROOT, 'bin');
 const PACKAGE = join(ROOT, 'package');
 const PACKAGE_LOCK = join(PACKAGE, 'package-lock.json');
 const PACKAGE_MODULES = join(PACKAGE, 'node_modules');
-const PACKAGE_MODULES_BIN = join(PACKAGE_MODULES, '.bin');
 
 // ./vendor
 const VENDOR = join(ROOT, 'vendor');
@@ -205,7 +204,6 @@ async function main() {
 
   // Clean up NPM crap.
   await clean(PACKAGE_MODULES);
-  await fs.rimraf(PACKAGE_MODULES_BIN);
   await fs.rimraf(PACKAGE_LOCK);
 
   // Move node_modules to vendor directory.
