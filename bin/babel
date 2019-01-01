@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+'use strict';
+
+module.exports = require("../vendor/node_modules/@babel/cli/bin/babel.js");

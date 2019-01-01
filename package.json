@@ -1,0 +1,25 @@
+{
+  "name": "babylonia",
+  "version": "7.2.2",
+  "description": "Vendored babel",
+  "keywords": [
+    "babel"
+  ],
+  "license": "MIT",
+  "repository": "git://github.com/chjj/babylonia.git",
+  "homepage": "https://github.com/chjj/babylonia",
+  "bugs": {
+    "url": "https://github.com/chjj/babylonia/issues"
+  },
+  "author": "Christopher Jeffrey <chjjeffrey@gmail.com>",
+  "main": "./index.js",
+  "bin": {
+    "babel": "./bin/babel",
+    "babel-external-helpers": "./bin/babel-external-helpers",
+    "babel-node": "./bin/babel-node",
+    "babel-parser": "./bin/babel-parser"
+  },
+  "engines": {
+    "node": ">=6.9.0"
+  }
+}

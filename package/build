@@ -1,0 +1,214 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const assert = require('assert');
+const cp = require('child_process');
+const fs = require('bfile');
+const path = require('path');
+
+const {
+  basename,
+  isAbsolute,
+  join,
+  relative,
+  resolve
+} = path;
+
+/*
+ * Constants
+ */
+
+// ./
+const ROOT = resolve(__dirname, '..');
+const INDEXJS = join(ROOT, 'index.js');
+
+// ./bin
+const BIN = join(ROOT, 'bin');
+
+// ./package
+const PACKAGE = join(ROOT, 'package');
+const PACKAGE_LOCK = join(PACKAGE, 'package-lock.json');
+const PACKAGE_MODULES = join(PACKAGE, 'node_modules');
+const PACKAGE_MODULES_BIN = join(PACKAGE_MODULES, '.bin');
+
+// ./vendor
+const VENDOR = join(ROOT, 'vendor');
+const VENDOR_MODULES = join(VENDOR, 'node_modules');
+const VENDOR_MODULES_BABEL = join(VENDOR_MODULES, '@babel');
+
+const PREFIX = '../vendor/node_modules/@babel';
+
+const BIN_FILES = [
+  ['babel', `${PREFIX}/cli/bin/babel.js`],
+  ['babel-external-helpers', `${PREFIX}/cli/bin/babel-external-helpers.js`],
+  ['babel-node', `${PREFIX}/node/bin/babel-node.js`],
+  ['babel-parser', `${PREFIX}/parser/bin/babel-parser.js`]
+];
+
+/*
+ * Build
+ */
+
+async function exec(cwd, args) {
+  assert(typeof cwd === 'string');
+  assert(Array.isArray(args));
+  assert(args.length >= 1);
+
+  const file = args.shift();
+  const options = { cwd };
+
+  return new Promise((resolve, reject) => {
+    const cb = (err, stdout, stderr) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve([stdout, stderr]);
+    };
+
+    try {
+      cp.execFile(file, args, options, cb);
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
+async function traverse(path, cb) {
+  assert(typeof path === 'string');
+  assert(typeof cb === 'function');
+
+  const root = resolve(path);
+  const stat = await fs.lstatTry(root);
+
+  if (!stat || !stat.isDirectory())
+    return;
+
+  await (async function next(path) {
+    const stat = await fs.lstat(path);
+    const file = relative(root, path);
+
+    if (stat.isDirectory()) {
+      for (const name of (await fs.readdir(path)))
+        await next(join(path, name));
+      return;
+    }
+
+    if (stat.isFile() || stat.isSymbolicLink()) {
+      await cb(file, stat);
+      return;
+    }
+  })(root);
+}
+
+async function clean(root) {
+  assert(typeof root === 'string');
+  assert(isAbsolute(root));
+
+  await traverse(root, async (file, stat) => {
+    if (!stat.isFile())
+      return;
+
+    if (basename(file) !== 'package.json')
+      return;
+
+    const path = join(root, file);
+    const text = await fs.readFile(path, 'utf8');
+    const json = JSON.parse(text);
+
+    if (json == null || typeof json !== 'object')
+      return;
+
+    let changed = false;
+
+    for (const key of Object.keys(json)) {
+      if (key[0] === '_') {
+        delete json[key];
+        changed = true;
+      }
+    }
+
+    if (!changed)
+      return;
+
+    await fs.writeFile(path, JSON.stringify(json, null, 2) + '\n');
+  });
+}
+
+function binPointer(location) {
+  assert(typeof location === 'string');
+
+  let out = '';
+
+  out += '#!/usr/bin/env node\n';
+  out += '\n';
+  out += jsPointer(location);
+
+  return out;
+}
+
+function jsPointer(location) {
+  assert(typeof location === 'string');
+
+  let out = '';
+
+  out += '\'use strict\';\n';
+  out += '\n';
+  out += `module.exports = require(${JSON.stringify(location)});\n`;
+
+  return out;
+}
+
+async function main() {
+  // Fresh install.
+  await fs.rimraf(BIN);
+  await fs.rimraf(VENDOR);
+  await fs.rimraf(PACKAGE_MODULES);
+
+  await exec(PACKAGE, ['npm', 'install',
+                       '--no-shrinkwrap',
+                       '--no-package-lock']);
+
+  // Clean up NPM crap.
+  await clean(PACKAGE_MODULES);
+  await fs.rimraf(PACKAGE_MODULES_BIN);
+  await fs.rimraf(PACKAGE_LOCK);
+
+  // Move node_modules to vendor directory.
+  await fs.mkdirp(VENDOR, 0o755);
+  await fs.rename(PACKAGE_MODULES, VENDOR_MODULES);
+
+  // Create pointers in the root directory.
+  for (const file of (await fs.readdir(VENDOR_MODULES_BABEL))) {
+    const dir = join(VENDOR_MODULES_BABEL, file);
+    const stat = await fs.lstat(dir);
+
+    if (!stat.isDirectory())
+      throw new Error(`Invalid file: "${dir}".`);
+
+    const path = join(ROOT, `${file}.js`);
+    const location = `./vendor/node_modules/@babel/${file}`;
+    const code = jsPointer(location);
+
+    await fs.writeFile(path, code, { mode: 0o644 });
+  }
+
+  // Create our index file which points to @babel/core.
+  await fs.writeFile(INDEXJS, jsPointer('./core'), { mode: 0o644 });
+
+  // Create pointers in the bin directory.
+  await fs.mkdirp(BIN, 0o755);
+
+  for (const [name, location] of BIN_FILES) {
+    const path = join(BIN, name);
+    const code = binPointer(location);
+
+    await fs.writeFile(path, code, { mode: 0o755 });
+  }
+}
+
+main().catch((err) => {
+  console.error(err.stack + '\n');
+  process.exit(1);
+});
