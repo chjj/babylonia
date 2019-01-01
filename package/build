@@ -90,8 +90,11 @@ async function traverse(path, cb) {
     const file = relative(root, path);
 
     if (stat.isDirectory()) {
+      await cb(file, stat);
+
       for (const name of (await fs.readdir(path)))
         await next(join(path, name));
+
       return;
     }
 
@@ -106,14 +109,32 @@ async function clean(root) {
   assert(typeof root === 'string');
   assert(isAbsolute(root));
 
+  const bins = [];
+  const links = [];
+
   await traverse(root, async (file, stat) => {
-    if (!stat.isFile())
-      return;
-
-    if (basename(file) !== 'package.json')
-      return;
-
+    const name = basename(file);
     const path = join(root, file);
+
+    if (stat.isDirectory()) {
+      if (name === '.bin')
+        bins.push(path);
+      return;
+    }
+
+    if (!stat.isFile()) {
+      links.push(path);
+      return;
+    }
+
+    if (name === 'package-lock.json') {
+      await fs.unlink(path);
+      return;
+    }
+
+    if (name !== 'package.json')
+      return;
+
     const text = await fs.readFile(path, 'utf8');
     const json = JSON.parse(text);
 
@@ -132,8 +153,21 @@ async function clean(root) {
     if (!changed)
       return;
 
+    console.log(`Cleaning package.json: "${path}".`);
+
     await fs.writeFile(path, JSON.stringify(json, null, 2) + '\n');
   });
+
+  for (const path of bins) {
+    console.log(`Removing .bin directory: "${path}".`);
+    await fs.rimraf(path);
+  }
+
+  if (links.length > 0) {
+    console.log('Warning: found symbolic links:');
+    for (const link of links)
+      console.log('  ' + link);
+  }
 }
 
 function binPointer(location) {
