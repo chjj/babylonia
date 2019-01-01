@@ -314,7 +314,6 @@ function jsPointer(location) {
 }
 
 async function main() {
-  /*
   // Fresh install.
   await fs.rimraf(PACKAGE_LOCK);
   await fs.rimraf(PACKAGE_MODULES);
@@ -324,7 +323,6 @@ async function main() {
                        '--production',
                        '--no-shrinkwrap',
                        '--no-package-lock']);
-  */
 
   // Clean up NPM crap.
   await clean(PACKAGE_MODULES);
