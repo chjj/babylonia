@@ -199,6 +199,7 @@ async function main() {
   await fs.mkdirp(PACKAGE_MODULES, 0o755);
 
   await exec(PACKAGE, ['npm', 'install',
+                       '--production',
                        '--no-shrinkwrap',
                        '--no-package-lock']);
 
