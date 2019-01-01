@@ -57,7 +57,7 @@ This module will provide `babel`, `babel-external-helpers`, `babel-node`, and
 $ babel -h
 ```
 
-## Disclaimer
+## Disclaimer & Reasoning
 
 Although its snappy name may make it look like one, Babylonia is _not_ an
 official @babel module. It's simply a snapshot of all @babel NPM packages. It
@@ -66,11 +66,25 @@ cryptocurrency project whose devs and users are particularly target-able for
 certain kinds of package attacks like the one seen on the `event-stream`
 package. As such, we seek to minimize the NPM attack surface.
 
-### Why not use shrinkwrap or bundledDependencies?
+### Why not use shrinkwrap and/or bundledDependencies?
 
 Bundling the dependencies directly allows one to clone directly from github
 without having to run `npm install`. We are aiming to minimize reliance on NPM
 altogether.
+
+### Why not use babel-standalone?
+
+`babel-standalone` by itself does not provide a complete solution. Several
+plugins and presets would still need to be included. Furthermore, as of
+babel@7.2.2 `babel-preset-env-standalone` is broken and throws an error when
+required.
+
+### Why not bundle it?
+
+Babel is a massive codebase and it is non-trivial to compile it into a single
+file (as evidenced by the official babel-preset-env-standalone package not even
+working!), especially when its baked-in behavior assumes dynamic requires for
+things like presets and plugins.
 
 ## License
 
