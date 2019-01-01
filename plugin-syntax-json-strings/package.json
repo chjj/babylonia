@@ -1,0 +1,14 @@
+{
+  "description": "Allow parsing of the U+2028 LINE SEPARATOR and U+2029 PARAGRAPH SEPARATOR in JS strings",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "plugin-syntax-json-strings",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-json-strings"
+  },
+  "version": "7.2.0"
+}

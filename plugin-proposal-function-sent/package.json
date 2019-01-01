@@ -1,0 +1,14 @@
+{
+  "description": "Compile the function.sent meta propety to valid ES2015 code",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "plugin-proposal-function-sent",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-function-sent"
+  },
+  "version": "7.2.0"
+}

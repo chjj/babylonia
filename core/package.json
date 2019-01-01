@@ -1,0 +1,42 @@
+{
+  "author": {
+    "name": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com"
+  },
+  "browser": {
+    "./lib/config/files/index.js": "./lib/config/files/index-browser.js",
+    "./lib/transform-file.js": "./lib/transform-file-browser.js"
+  },
+  "description": "Babel compiler core.",
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "homepage": "https://babeljs.io/",
+  "keywords": [
+    "6to5",
+    "babel",
+    "classes",
+    "const",
+    "es6",
+    "harmony",
+    "let",
+    "modules",
+    "transpile",
+    "transpiler",
+    "var",
+    "babel-core",
+    "compiler"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-core"
+  },
+  "version": "7.2.2",
+  "bundledDependencies": [
+    "debug",
+    "ms"
+  ]
+}

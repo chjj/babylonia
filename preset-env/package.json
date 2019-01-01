@@ -1,0 +1,17 @@
+{
+  "author": {
+    "name": "Henry Zhu",
+    "email": "hi@henryzoo.com"
+  },
+  "description": "A Babel preset for each environment.",
+  "gitHead": "d35f2ad92b322c3bb9c6792e2683807afae0b105",
+  "homepage": "https://babeljs.io/",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "preset-env",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-preset-env"
+  },
+  "version": "7.2.3"
+}

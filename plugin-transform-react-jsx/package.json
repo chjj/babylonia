@@ -1,0 +1,14 @@
+{
+  "description": "Turn JSX into React function calls",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "plugin-transform-react-jsx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx"
+  },
+  "version": "7.2.0"
+}

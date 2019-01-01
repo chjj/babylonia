@@ -1,0 +1,17 @@
+{
+  "author": {
+    "name": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com"
+  },
+  "description": "Provides polyfills necessary for a full ES2015+ environment",
+  "gitHead": "f130981546ee1f825e1645df27510185c221b7e8",
+  "homepage": "https://babeljs.io/",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "polyfill",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-polyfill"
+  },
+  "version": "7.2.5"
+}

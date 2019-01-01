@@ -1,0 +1,16 @@
+{
+  "author": {
+    "name": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com"
+  },
+  "description": "Collection of helper functions used by Babel transforms.",
+  "homepage": "https://babeljs.io/",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "helpers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-helpers"
+  },
+  "version": "7.2.0"
+}

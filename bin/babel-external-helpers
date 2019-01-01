@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+'use strict';
+
+module.exports = require("babylonia/cli/bin/babel-external-helpers.js");

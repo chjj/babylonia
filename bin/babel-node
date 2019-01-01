@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+'use strict';
+
+module.exports = require("babylonia/node/bin/babel-node.js");

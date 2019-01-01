@@ -1,0 +1,21 @@
+{
+  "author": {
+    "name": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com"
+  },
+  "browser": {
+    "./lib/node.js": "./lib/browser.js"
+  },
+  "description": "babel require hook",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "register",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-register"
+  },
+  "version": "7.0.0",
+  "bundledDependencies": [
+    "home-or-tmp"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "description": "This plugin transforms static class properties as well as properties declared with the property initializer syntax",
+  "gitHead": "d35f2ad92b322c3bb9c6792e2683807afae0b105",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "plugin-proposal-class-properties",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties"
+  },
+  "version": "7.2.3"
+}

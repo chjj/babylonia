@@ -1,0 +1,14 @@
+{
+  "description": "Compile optional catch bindings",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "plugin-proposal-optional-catch-binding",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-optional-catch-binding"
+  },
+  "version": "7.2.0"
+}

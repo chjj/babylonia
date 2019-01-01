@@ -1,0 +1,25 @@
+{
+  "author": {
+    "name": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com"
+  },
+  "description": "Babel command line.",
+  "gitHead": "d35f2ad92b322c3bb9c6792e2683807afae0b105",
+  "homepage": "https://babeljs.io/",
+  "keywords": [
+    "6to5",
+    "babel",
+    "es6",
+    "transpile",
+    "transpiler",
+    "babel-cli",
+    "compiler"
+  ],
+  "license": "MIT",
+  "name": "cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-cli"
+  },
+  "version": "7.2.3"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "Ensure that reserved words are quoted in object property keys",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "plugin-transform-property-literals",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-property-literals"
+  },
+  "version": "7.2.0"
+}

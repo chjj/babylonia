@@ -1,0 +1,15 @@
+{
+  "author": {
+    "name": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com"
+  },
+  "description": "Helper function to support fixtures",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "helper-fixtures",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-helper-fixtures"
+  },
+  "version": "7.2.0"
+}

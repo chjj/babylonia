@@ -1,0 +1,16 @@
+{
+  "author": {
+    "name": "Logan Smyth",
+    "email": "loganfsmyth@gmail.com"
+  },
+  "description": "Babel helper functions for inserting module loads",
+  "homepage": "https://babeljs.io/",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "helper-module-imports",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel/tree/master/packages/babel-helper-module-imports"
+  },
+  "version": "7.0.0"
+}
