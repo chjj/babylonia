@@ -104,6 +104,36 @@ async function traverse(path, cb) {
   })(root);
 }
 
+async function readDeps(path) {
+  assert(typeof path === 'string');
+  assert(isAbsolute(path));
+
+  const list = await fs.readdir(path);
+  const out = [];
+
+  for (const name of list) {
+    if (name === '.bin')
+      continue;
+
+    if (name[0] === '@') {
+      const list2 = await fs.readdir(join(path, name));
+
+      for (const name2 of list2) {
+        if (name2 === '.bin')
+          continue;
+
+        out.push(`${name}/${name2}`);
+      }
+
+      continue;
+    }
+
+    out.push(name);
+  }
+
+  return out.sort();
+}
+
 async function clean(root) {
   assert(typeof root === 'string');
   assert(isAbsolute(root));
@@ -168,11 +198,7 @@ async function clean(root) {
     const nm = join(dirname(path), 'node_modules');
 
     if (await fs.exists(nm)) {
-      const list = await fs.readdir(nm);
-
-      json.bundledDependencies = list.filter(f => f !== '.bin');
-      json.bundledDependencies.sort();
-
+      json.bundledDependencies = await readDeps(nm);
       changed = true;
     }
 
@@ -382,8 +408,7 @@ async function main() {
     const text = await fs.readFile(PACKAGE_JSON, 'utf8');
     const json = JSON.parse(text);
 
-    json.bundledDependencies = await fs.readdir(MODULES);
-    json.bundledDependencies.sort();
+    json.bundledDependencies = await readDeps(MODULES);
 
     const out = JSON.stringify(json, null, 2) + '\n';
 
