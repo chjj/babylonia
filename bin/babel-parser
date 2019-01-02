@@ -2,4 +2,4 @@
 
 'use strict';
 
-module.exports = require("babylonia/parser/bin/babel-parser.js");
+module.exports = require("../parser/bin/babel-parser.js");

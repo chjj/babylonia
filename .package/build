@@ -321,7 +321,6 @@ async function main() {
 
   await exec(PACKAGE, ['npm', 'install',
                        '--production',
-                       '--no-shrinkwrap',
                        '--no-package-lock']);
 
   // Clean up NPM crap.

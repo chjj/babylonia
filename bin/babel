@@ -2,4 +2,4 @@
 
 'use strict';
 
-module.exports = require("babylonia/cli/bin/babel.js");
+module.exports = require("../cli/bin/babel.js");
