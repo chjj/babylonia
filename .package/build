@@ -29,8 +29,8 @@ const PACKAGE_JSON = join(ROOT, 'package.json');
 // ./bin
 const BIN = join(ROOT, 'bin');
 
-// ./package
-const PACKAGE = join(ROOT, 'package');
+// ./.package
+const PACKAGE = join(ROOT, '.package');
 const PACKAGE_LOCK = join(PACKAGE, 'package-lock.json');
 const PACKAGE_MODULES = join(PACKAGE, 'node_modules');
 
@@ -339,7 +339,7 @@ async function main() {
     if (name === '.git')
       continue;
 
-    if (name === 'package')
+    if (name === '.package')
       continue;
 
     await fs.rimraf(path);
