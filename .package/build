@@ -39,10 +39,10 @@ const MODULES = join(ROOT, 'node_modules');
 const MODULES_BABEL = join(MODULES, '@babel');
 
 const BIN_FILES = [
-  ['babel', 'babylonia/cli/bin/babel.js'],
-  ['babel-external-helpers', 'babylonia/cli/bin/babel-external-helpers.js'],
-  ['babel-node', 'babylonia/node/bin/babel-node.js'],
-  ['babel-parser', 'babylonia/parser/bin/babel-parser.js']
+  ['babel', '../cli/bin/babel.js'],
+  ['babel-external-helpers', '../cli/bin/babel-external-helpers.js'],
+  ['babel-node', '../node/bin/babel-node.js'],
+  ['babel-parser', '../parser/bin/babel-parser.js']
 ];
 
 /*
