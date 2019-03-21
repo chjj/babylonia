@@ -4,7 +4,7 @@
 
 const assert = require('assert');
 const cp = require('child_process');
-const fs = require('./fs');
+const fs = require('bfile');
 const path = require('path');
 
 const {
@@ -272,7 +272,7 @@ async function clean(root) {
 
   for (const path of bins) {
     console.log(`Removing .bin directory: "${path}".`);
-    await fs.rimraf(path);
+    await fs.remove(path);
   }
 
   if (links.length > 0) {
@@ -341,17 +341,22 @@ function jsPointer(location) {
 
 async function main() {
   // Fresh install.
-  await fs.rimraf(PACKAGE_LOCK);
-  await fs.rimraf(PACKAGE_MODULES);
-  await fs.mkdirp(PACKAGE_MODULES, 0o755);
+  await fs.remove(PACKAGE_LOCK);
+  await fs.remove(PACKAGE_MODULES);
 
-  await exec(PACKAGE, ['npm', 'install',
-                       '--production',
-                       '--no-package-lock']);
+  if (process.argv[2] === '--npm') {
+    await fs.mkdirp(PACKAGE_MODULES, 0o755);
+
+    await exec(PACKAGE, ['npm', 'install',
+                         '--production',
+                         '--no-package-lock']);
+  } else {
+    await fs.copy(process.argv[2], PACKAGE_MODULES);
+  }
 
   // Clean up NPM crap.
   await clean(PACKAGE_MODULES);
-  await fs.rimraf(PACKAGE_LOCK);
+  await fs.remove(PACKAGE_LOCK);
 
   // Remove all non-package directories.
   for (const name of (await fs.readdir(ROOT))) {
@@ -367,7 +372,7 @@ async function main() {
     if (name === '.package')
       continue;
 
-    await fs.rimraf(path);
+    await fs.remove(path);
   }
 
   // Move node_modules to vendor directory.
