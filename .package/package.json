@@ -134,7 +134,6 @@
     "@babel/plugin-transform-unicode-regex": "*",
     "@babel/polyfill": "*",
     "@babel/preset-env": "*",
-    "@babel/preset-env-standalone": "*",
     "@babel/preset-flow": "*",
     "@babel/preset-react": "*",
     "@babel/preset-stage-0": "*",
@@ -146,7 +145,6 @@
     "@babel/runtime": "*",
     "@babel/runtime-corejs2": "*",
     "@babel/runtime-corejs3": "*",
-    "@babel/standalone": "*",
     "@babel/template": "*",
     "@babel/traverse": "*",
     "@babel/types": "*"
