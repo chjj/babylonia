@@ -1,5 +1,6 @@
 {
   "description": "Babel preset for TypeScript.",
+  "gitHead": "d1fe2d05f4c468640facf40565e30f7110757f2d",
   "keywords": [
     "babel-preset",
     "typescript"
@@ -11,5 +12,5 @@
     "type": "git",
     "url": "https://github.com/babel/babel/tree/master/packages/babel-preset-typescript"
   },
-  "version": "7.1.0"
+  "version": "7.3.3"
 }

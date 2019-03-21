@@ -4,11 +4,12 @@
     "email": "sebmck@gmail.com"
   },
   "description": "babel's modular runtime helpers",
+  "gitHead": "7dea0f23de51af336a2fab0286a73af30cddf3be",
   "license": "MIT",
   "name": "runtime",
   "repository": {
     "type": "git",
     "url": "https://github.com/babel/babel/tree/master/packages/babel-runtime"
   },
-  "version": "7.2.0"
+  "version": "7.4.2"
 }

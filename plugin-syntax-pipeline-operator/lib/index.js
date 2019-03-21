@@ -15,7 +15,7 @@ function _helperPluginUtils() {
   return data;
 }
 
-const proposals = ["minimal"];
+const proposals = ["minimal", "smart"];
 exports.proposals = proposals;
 
 var _default = (0, _helperPluginUtils().declare)((api, {

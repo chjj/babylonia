@@ -4,7 +4,7 @@
     "url": "https://babeljs.io/team"
   },
   "description": "Compile class public and private fields, private methods and decorators to ES6",
-  "gitHead": "d35f2ad92b322c3bb9c6792e2683807afae0b105",
+  "gitHead": "f1328fb913b5a93d54dfc6e3728b1f56c8f4a804",
   "keywords": [
     "babel",
     "babel-plugin"
@@ -16,5 +16,5 @@
     "type": "git",
     "url": "https://github.com/babel/babel/tree/master/packages/babel-helper-create-class-features-plugin"
   },
-  "version": "7.2.3"
+  "version": "7.4.0"
 }

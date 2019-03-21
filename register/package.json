@@ -7,6 +7,7 @@
     "./lib/node.js": "./lib/browser.js"
   },
   "description": "babel require hook",
+  "gitHead": "f1328fb913b5a93d54dfc6e3728b1f56c8f4a804",
   "license": "MIT",
   "main": "lib/index.js",
   "name": "register",
@@ -14,8 +15,8 @@
     "type": "git",
     "url": "https://github.com/babel/babel/tree/master/packages/babel-register"
   },
-  "version": "7.0.0",
+  "version": "7.4.0",
   "bundledDependencies": [
-    "home-or-tmp"
+    "core-js"
   ]
 }

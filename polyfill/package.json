@@ -4,7 +4,7 @@
     "email": "sebmck@gmail.com"
   },
   "description": "Provides polyfills necessary for a full ES2015+ environment",
-  "gitHead": "f130981546ee1f825e1645df27510185c221b7e8",
+  "gitHead": "f1328fb913b5a93d54dfc6e3728b1f56c8f4a804",
   "homepage": "https://babeljs.io/",
   "license": "MIT",
   "main": "lib/index.js",
@@ -13,5 +13,5 @@
     "type": "git",
     "url": "https://github.com/babel/babel/tree/master/packages/babel-polyfill"
   },
-  "version": "7.2.5"
+  "version": "7.4.0"
 }

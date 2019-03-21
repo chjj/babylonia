@@ -11,6 +11,7 @@
   "engines": {
     "node": ">=6.9.0"
   },
+  "gitHead": "f1328fb913b5a93d54dfc6e3728b1f56c8f4a804",
   "homepage": "https://babeljs.io/",
   "keywords": [
     "6to5",
@@ -34,7 +35,7 @@
     "type": "git",
     "url": "https://github.com/babel/babel/tree/master/packages/babel-core"
   },
-  "version": "7.2.2",
+  "version": "7.4.0",
   "bundledDependencies": [
     "debug",
     "ms"

@@ -7,7 +7,7 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "gitHead": "d35f2ad92b322c3bb9c6792e2683807afae0b105",
+  "gitHead": "7dea0f23de51af336a2fab0286a73af30cddf3be",
   "homepage": "https://babeljs.io/",
   "keywords": [
     "babel",
@@ -25,5 +25,5 @@
     "url": "https://github.com/babel/babel/tree/master/packages/babel-parser"
   },
   "types": "typings/babel-parser.d.ts",
-  "version": "7.2.3"
+  "version": "7.4.2"
 }

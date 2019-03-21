@@ -4,6 +4,7 @@
     "email": "bn@cs.stanford.edu"
   },
   "description": "Explode async and generator functions into a state machine.",
+  "gitHead": "f1328fb913b5a93d54dfc6e3728b1f56c8f4a804",
   "homepage": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-regenerator",
   "license": "MIT",
   "main": "lib/index.js",
@@ -12,5 +13,5 @@
     "type": "git",
     "url": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-regenerator"
   },
-  "version": "7.0.0"
+  "version": "7.4.0"
 }

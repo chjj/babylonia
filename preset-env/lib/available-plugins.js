@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   "syntax-async-generators": require("babylonia/plugin-syntax-async-generators"),
+  "syntax-json-strings": require("babylonia/plugin-syntax-json-strings"),
   "syntax-object-rest-spread": require("babylonia/plugin-syntax-object-rest-spread"),
   "syntax-optional-catch-binding": require("babylonia/plugin-syntax-optional-catch-binding"),
   "transform-async-to-generator": require("babylonia/plugin-transform-async-to-generator"),
@@ -26,6 +27,7 @@ var _default = {
   "transform-modules-commonjs": require("babylonia/plugin-transform-modules-commonjs"),
   "transform-modules-systemjs": require("babylonia/plugin-transform-modules-systemjs"),
   "transform-modules-umd": require("babylonia/plugin-transform-modules-umd"),
+  "transform-named-capturing-groups-regex": require("babylonia/plugin-transform-named-capturing-groups-regex"),
   "transform-object-super": require("babylonia/plugin-transform-object-super"),
   "transform-parameters": require("babylonia/plugin-transform-parameters"),
   "transform-shorthand-properties": require("babylonia/plugin-transform-shorthand-properties"),
