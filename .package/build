@@ -112,14 +112,14 @@ async function readDeps(path) {
   const out = [];
 
   for (const name of list) {
-    if (name === '.bin')
+    if (name === '.')
       continue;
 
     if (name[0] === '@') {
       const list2 = await fs.readdir(join(path, name));
 
       for (const name2 of list2) {
-        if (name2 === '.bin')
+        if (name2 === '.')
           continue;
 
         out.push(`${name}/${name2}`);
@@ -132,6 +132,22 @@ async function readDeps(path) {
   }
 
   return out.sort();
+}
+
+async function resolveDeps(path, deps) {
+  assert(typeof path === 'string');
+  assert(isAbsolute(path));
+  assert(Array.isArray(deps));
+
+  const out = Object.create(null);
+
+  for (const name of deps) {
+    const json = await fs.readJSON(join(path, name, 'package.json'));
+
+    out[name] = json.version;
+  }
+
+  return out;
 }
 
 async function clean(root) {
@@ -348,7 +364,7 @@ async function main() {
     await fs.mkdirp(PACKAGE_MODULES, 0o755);
 
     await exec(PACKAGE, ['npm', 'install',
-                         '--production',
+                         '--omit=dev',
                          '--no-package-lock']);
   } else {
     await fs.copy(process.argv[2], PACKAGE_MODULES);
@@ -412,8 +428,11 @@ async function main() {
   {
     const text = await fs.readFile(PACKAGE_JSON, 'utf8');
     const json = JSON.parse(text);
+    const bundledDependencies = await readDeps(MODULES);
+    const dependencies = await resolveDeps(MODULES, bundledDependencies);
 
-    json.bundledDependencies = await readDeps(MODULES);
+    json.dependencies = dependencies;
+    json.bundledDependencies = bundledDependencies;
 
     const out = JSON.stringify(json, null, 2) + '\n';
 
