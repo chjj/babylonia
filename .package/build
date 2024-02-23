@@ -10,7 +10,6 @@ const path = require('path');
 const {
   basename,
   dirname,
-  extname,
   isAbsolute,
   join,
   relative,
@@ -35,14 +34,15 @@ const PACKAGE_LOCK = join(PACKAGE, 'package-lock.json');
 const PACKAGE_MODULES = join(PACKAGE, 'node_modules');
 
 // ./node_modules
-const MODULES = join(ROOT, 'node_modules');
-const MODULES_BABEL = join(MODULES, '@babel');
+const NODE_MODULES = join(ROOT, 'node_modules');
+const BABEL_ROOT = join(NODE_MODULES, '@babel');
 
 const BIN_FILES = [
-  ['babel', '../cli/bin/babel.js'],
-  ['babel-external-helpers', '../cli/bin/babel-external-helpers.js'],
-  ['babel-node', '../node/bin/babel-node.js'],
-  ['babel-parser', '../parser/bin/babel-parser.js']
+  ['babel', '../node_modules/@babel/cli/bin/babel.js'],
+  ['babel-external-helpers',
+   '../node_modules/@babel/cli/bin/babel-external-helpers.js'],
+  ['babel-node', '../node_modules/@babel/node/bin/babel-node.js'],
+  ['babel-parser', '../node_modules/@babel/parser/bin/babel-parser.js']
 ];
 
 /*
@@ -273,11 +273,6 @@ async function clean(root) {
       changed = true;
     }
 
-    if (typeof json.name === 'string' && json.name.startsWith('@babel/')) {
-      json.name = json.name.substring(7);
-      changed = true;
-    }
-
     if (!changed)
       return;
 
@@ -296,39 +291,6 @@ async function clean(root) {
     for (const link of links)
       console.log('  ' + link);
   }
-}
-
-async function convert(root) {
-  assert(typeof root === 'string');
-  await traverse(root, async (file, stat) => {
-    if (!stat.isFile())
-      return;
-
-    switch (extname(file)) {
-      case '.json':
-      case '.js':
-      case '.jsx':
-      case '.es6':
-      case '.es':
-      case '.mjs':
-      case '.ts':
-      case '.tsx':
-      case '.flow':
-        break;
-      default:
-        return;
-    }
-
-    const path = join(root, file);
-    const text = await fs.readFile(path, 'utf8');
-
-    if (!text.includes('@babel'))
-      return;
-
-    const out = text.replace(/@babel/g, 'babylonia');
-
-    await fs.writeFile(path, out, { mode: stat.mode });
-  });
 }
 
 function binPointer(location) {
@@ -392,30 +354,32 @@ async function main() {
   }
 
   // Move node_modules to vendor directory.
-  await fs.mkdirp(MODULES, 0o755);
-  await fs.rename(PACKAGE_MODULES, MODULES);
+  // await fs.remove(NODE_MODULES);
+  await fs.rename(PACKAGE_MODULES, NODE_MODULES);
 
-  // Convert @babel to babylonia.
-  await convert(MODULES);
-
-  // Move @babel contents to the root directory.
-  for (const file of (await fs.readdir(MODULES_BABEL))) {
-    const path = join(MODULES_BABEL, file);
+  // Create links from ./* to ./node_modules/@babel/*
+  for (const file of (await fs.readdir(BABEL_ROOT))) {
+    const path = join(BABEL_ROOT, file);
     const stat = await fs.lstat(path);
 
     if (!stat.isDirectory())
       throw new Error(`Invalid file: "${path}".`);
 
-    await fs.rename(path, join(ROOT, file));
+    const code = jsPointer(`./node_modules/@babel/${file}`);
+
+    await fs.writeFile(join(ROOT, file), code, { mode: 0o644 });
   }
 
-  // Remove @babel dir.
-  await fs.rmdir(MODULES_BABEL);
-
   // Create our index file which points to @babel/core.
-  await fs.writeFile(INDEX_JS, jsPointer('./core'), { mode: 0o644 });
+  {
+    const path = INDEX_JS;
+    const code = jsPointer('./node_modules/@babel/core');
+
+    await fs.writeFile(path, code, { mode: 0o644 });
+  }
 
   // Create pointers in the bin directory.
+  // await fs.remove(BIN);
   await fs.mkdirp(BIN, 0o755);
 
   for (const [name, location] of BIN_FILES) {
@@ -428,8 +392,8 @@ async function main() {
   {
     const text = await fs.readFile(PACKAGE_JSON, 'utf8');
     const json = JSON.parse(text);
-    const bundledDependencies = await readDeps(MODULES);
-    const dependencies = await resolveDeps(MODULES, bundledDependencies);
+    const bundledDependencies = await readDeps(NODE_MODULES);
+    const dependencies = await resolveDeps(NODE_MODULES, bundledDependencies);
 
     json.dependencies = dependencies;
     json.bundledDependencies = bundledDependencies;
