@@ -27,7 +27,7 @@ function createCorejs3Plugin(corejs, absoluteImports) {
     absoluteImports,
     [pluginsCompat]: {
       useBabelRuntime: true,
-      ext: ""
+      ext: ".js"
     }
   }, filename);
 }

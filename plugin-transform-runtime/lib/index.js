@@ -82,7 +82,9 @@ var _default = exports.default = (0, _helperPluginUtils.declare)((api, options, 
         }
         const isInteropHelper = HEADER_HELPERS.indexOf(name) !== -1;
         const blockHoist = isInteropHelper && !(0, _helperModuleImports.isModule)(file.path) ? 4 : undefined;
-        let helperPath = `${modulePath}/helpers/${esModules && file.path.node.sourceType === "module" ? "esm/" + name : name}`;
+        let helperPath = esModules && file.path.node.sourceType === "module"
+                       ? `${modulePath}/helpers/esm/${name}.js`
+                       : `${modulePath}/helpers/${name}`;
         if (absoluteRuntime) helperPath = (0, _index.resolveFSPath)(helperPath);
         return addDefaultImport(helperPath, name, blockHoist, true);
       });

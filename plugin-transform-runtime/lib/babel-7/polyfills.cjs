@@ -41,7 +41,7 @@ module.exports = function createBasePolyfillsPlugin({
     [pluginsCompat]: {
       useBabelRuntime: true,
       runtimeVersion,
-      ext: ""
+      ext: ".js"
     }
   };
   return createRegeneratorPlugin(polyfillOpts, regenerator, corejsVersion === 2 ? createCorejs2Plugin(polyfillOpts) : corejsVersion === 3 ? corejs3Plugin : null);
