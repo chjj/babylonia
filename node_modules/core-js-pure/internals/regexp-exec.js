@@ -1,1 +1,2 @@
-// empty
+'use strict';
+module.exports = /./.exec;
