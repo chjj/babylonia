@@ -359,16 +359,16 @@ async function main() {
   await fs.rename(PACKAGE_MODULES, NODE_MODULES);
 
   // Create links from ./* to ./node_modules/@babel/*
-  for (const file of (await fs.readdir(BABEL_ROOT))) {
-    const path = join(BABEL_ROOT, file);
+  for (const name of (await fs.readdir(BABEL_ROOT))) {
+    const path = join(BABEL_ROOT, name);
     const stat = await fs.lstat(path);
 
     if (!stat.isDirectory())
       throw new Error(`Invalid file: "${path}".`);
 
-    const code = jsPointer(`./node_modules/@babel/${file}`);
+    const code = jsPointer(`./node_modules/@babel/${name}`);
 
-    await fs.writeFile(join(ROOT, file), code, { mode: 0o644 });
+    await fs.writeFile(join(ROOT, name), code, { mode: 0o644 });
   }
 
   // Create our index file which points to @babel/core.
