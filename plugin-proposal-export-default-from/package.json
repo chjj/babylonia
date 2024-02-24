@@ -1,0 +1,21 @@
+{
+  "name": "plugin-proposal-export-default-from",
+  "version": "7.23.3",
+  "description": "Compile export default to ES2015",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-proposal-export-default-from"
+  },
+  "homepage": "https://babel.dev/docs/en/next/babel-plugin-proposal-export-default-from",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "type": "commonjs"
+}

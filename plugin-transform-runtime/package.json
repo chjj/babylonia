@@ -1,0 +1,25 @@
+{
+  "name": "plugin-transform-runtime",
+  "version": "7.23.9",
+  "description": "Externalise references to helpers and builtins, automatically polyfilling your code without polluting globals",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-transform-runtime"
+  },
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "browser": {
+    "./lib/get-runtime-path/index.js": "./lib/get-runtime-path/browser.js",
+    "./src/get-runtime-path/index.ts": "./src/get-runtime-path/browser.ts"
+  },
+  "homepage": "https://babel.dev/docs/en/next/babel-plugin-transform-runtime",
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "type": "commonjs"
+}

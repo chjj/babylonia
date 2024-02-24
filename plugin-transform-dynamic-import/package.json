@@ -1,0 +1,20 @@
+{
+  "name": "plugin-transform-dynamic-import",
+  "version": "7.23.4",
+  "description": "Transform import() expressions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-transform-dynamic-import"
+  },
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "type": "commonjs"
+}

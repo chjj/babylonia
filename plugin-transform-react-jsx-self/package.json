@@ -1,0 +1,21 @@
+{
+  "name": "plugin-transform-react-jsx-self",
+  "version": "7.23.3",
+  "description": "Add a __self prop to all JSX Elements",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-transform-react-jsx-self"
+  },
+  "homepage": "https://babel.dev/docs/en/next/babel-plugin-transform-react-jsx-self",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "type": "commonjs"
+}

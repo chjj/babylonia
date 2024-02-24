@@ -1,0 +1,21 @@
+{
+  "name": "plugin-proposal-function-sent",
+  "version": "7.23.3",
+  "description": "Compile the function.sent meta property to valid ES2015 code",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-proposal-function-sent"
+  },
+  "homepage": "https://babel.dev/docs/en/next/babel-plugin-proposal-function-sent",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "type": "commonjs"
+}

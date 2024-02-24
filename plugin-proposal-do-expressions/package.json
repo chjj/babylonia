@@ -1,0 +1,21 @@
+{
+  "name": "plugin-proposal-do-expressions",
+  "version": "7.23.3",
+  "description": "Compile do expressions to ES5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-proposal-do-expressions"
+  },
+  "homepage": "https://babel.dev/docs/en/next/babel-plugin-proposal-do-expressions",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "type": "commonjs"
+}

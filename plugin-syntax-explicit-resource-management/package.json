@@ -1,0 +1,20 @@
+{
+  "name": "plugin-syntax-explicit-resource-management",
+  "version": "7.23.3",
+  "description": "Allow parsing of the using declarations",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-syntax-explicit-resource-management"
+  },
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "type": "commonjs"
+}

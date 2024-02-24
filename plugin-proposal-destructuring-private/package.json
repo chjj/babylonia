@@ -1,0 +1,25 @@
+{
+  "name": "plugin-proposal-destructuring-private",
+  "version": "7.23.3",
+  "description": "Transform destructuring private proposal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-plugin-proposal-destructuring-private"
+  },
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "homepage": "https://babel.dev/docs/en/next/babel-plugin-proposal-destructuring-private",
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "author": "The Babel Team (https://babel.dev/team)",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "type": "commonjs"
+}

@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require("./node_modules/@babel/core");
+module.exports = require("./core");

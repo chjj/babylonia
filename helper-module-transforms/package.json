@@ -1,0 +1,18 @@
+{
+  "name": "helper-module-transforms",
+  "version": "7.23.3",
+  "description": "Babel helper functions for implementing ES6 module transformations",
+  "author": "The Babel Team (https://babel.dev/team)",
+  "homepage": "https://babel.dev/docs/en/next/babel-helper-module-transforms",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-helper-module-transforms"
+  },
+  "main": "./lib/index.js",
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "type": "commonjs"
+}
